@@ -16,7 +16,7 @@
     <div v-if="showLicense" class="container">
           <h1 class="text-center mt-5 mb-5">MY LICENSE</h1>
           <div class="card mx-auto" style="max-width: 600px;">
-            <img :src="'http://192.168.0.108:8081/api/images/' + myLicense[0].front_pic" class="card-img-top" style="max-height: 600px; max-width: 600px;" alt="License Image">
+            <img :src="'http://localhost:8081/api/images/' + myLicense[0].front_pic" class="card-img-top" style="max-height: 600px; max-width: 600px;" alt="License Image">
             <div class="card-title text-h6 text-center">
               {{ formattedName }}
             </div>

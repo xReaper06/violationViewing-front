@@ -156,7 +156,7 @@ import { useRoute,useRouter } from 'vue-router';
             msg.value = 'Empty Inputs';
         loading.value = false;
           }else{
-            const response = await axios.post('http://192.168.0.108:8084/api/enforcer-registration',{
+            const response = await axios.post('http://localhost:8084/api/enforcer-registration',{
               nickname:nickname.value,
               email:email.value,
               password:password.value

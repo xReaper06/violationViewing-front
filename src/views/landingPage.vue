@@ -41,7 +41,7 @@
               >
             </p>
             <p class="fs-3 ps-5 ps-5 animate__animated animate__fadeInUp">
-              This System Allows you to view <br />
+              This System is PWA or Progressive Web Application <br /> that Allows you to view 
               your existing Traffic Violations <br />
               in Cordova Cebu.
             </p>

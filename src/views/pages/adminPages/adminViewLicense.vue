@@ -2,7 +2,16 @@
             
 <div class="container mt-3">
   <div class="card shadow p-3 mb-5 bg-white rounded elevation-6">
-
+    <div v-if="license.is_verified == 0">
+      <router-link to="/admin/adminLicenseNotVerified" class="btn btn-primary">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-back-up" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 14l-4 -4l4 -4" /><path d="M5 10h11a4 4 0 1 1 0 8h-1" /></svg>
+      </router-link>
+    </div>
+    <div v-if="license.is_verified == 2">
+      <router-link to="/admin/adminLicenseVerified" class="btn btn-primary">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-back-up" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 14l-4 -4l4 -4" /><path d="M5 10h11a4 4 0 1 1 0 8h-1" /></svg>
+      </router-link>
+    </div>
     <!-- Bootstrap row -->
     <div class="row">
       <!-- Bootstrap column for images -->
@@ -11,12 +20,12 @@
           <!-- Front Pic -->
           <div class="col-6">
             <p>Front Pic</p>
-            <img :src="`http://192.168.0.108:8081/api/images/${license.front_pic}`" alt="Front Pic" class="img-fluid">
+            <img :src="`http://localhost:8081/api/images/${license.front_pic}`" alt="Front Pic" class="img-fluid">
           </div>
           <!-- Back Pic -->
           <div class="col-6">
             <p>Back Pic</p>
-            <img :src="`http://192.168.0.108:8081/api/images/${license.back_pic}`" alt="Back Pic" class="img-fluid">
+            <img :src="`http://localhost:8081/api/images/${license.back_pic}`" alt="Back Pic" class="img-fluid">
           </div>
         </div>
       </div>

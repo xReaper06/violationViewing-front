@@ -107,7 +107,7 @@ const handleChangePassword = async()=>{
     
         const config = { headers }
         try {
-            const response = await axios.post('http://192.168.0.108:8084/api/change-forgot-password',{
+            const response = await axios.post('http://localhost:8084/api/change-forgot-password',{
                 password:password.value
             },config);
             if(response){

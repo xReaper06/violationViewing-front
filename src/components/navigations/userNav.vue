@@ -38,7 +38,7 @@
                 role="button"
                 aria-expanded="false"
               >
-                <img :src="`http://192.168.0.108:8084/api/images/${name.profile_pic}`" alt="" class="img-fluid" style="height: 50px; width: 50px; border-radius: 50%;" >
+                <img :src="`http://localhost:8084/api/images/${name.profile_pic}`" alt="" class="img-fluid" style="height: 50px; width: 50px; border-radius: 50%;" >
                 {{ name.nickname }}
               </a>
               <ul class="dropdown-menu" :class="{ show: showNav }">

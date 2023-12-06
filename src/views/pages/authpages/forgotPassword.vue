@@ -69,7 +69,7 @@ const msg = ref('')
 
 const sendForgotPassword = async()=>{
     try {
-        const response = await axios.post('http://192.168.0.108:8084/api/forgot-password',{
+        const response = await axios.post('http://localhost:8084/api/forgot-password',{
             email:email.value
         })
         if(response){

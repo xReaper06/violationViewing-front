@@ -21,10 +21,12 @@
 
     <!-- Bootstrap select -->
     <label for="select">Select Violator Type:</label>
-    <select class="form-control mt-5" v-model="type" @change="changeTypeViolators">
-      <option value="Normal">Normal</option>
-      <option value="Empound">Empound</option>
-    </select>
+<select class="form-control mt-5" v-model="type" @change="changeTypeViolators">
+  <option value="" selected disabled>Select Violator Type</option>
+  <option value="Normal">Normal</option>
+  <option value="Empound">Empound</option>
+</select>
+
 
     <!-- Normal Violations Section -->
     <div v-if="type === 'Normal' ">

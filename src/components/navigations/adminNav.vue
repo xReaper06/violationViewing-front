@@ -28,7 +28,7 @@
           <!-- Add your sidebar items here -->
           <li class="nav-item">
             <a class="nav-link active" href="#">
-              <img :src="`http://192.168.0.108:8084/api/images/${name.profile_pic}`" class="img-fluid" style="width: 40px; height: 40px; border-radius: 50%;" alt="">
+              <img :src="`http://localhost:8084/api/images/${name.profile_pic}`" class="img-fluid" style="width: 40px; height: 40px; border-radius: 50%;" alt="">
               {{ name.nickname }}
             </a>
           </li>

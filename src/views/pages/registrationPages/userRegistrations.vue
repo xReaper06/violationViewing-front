@@ -2,12 +2,12 @@
     <div>
         <div class="authentication">
     <!-- Success Alert -->
-    <div v-if="success" class="alert alert-success" role="alert">
+    <div v-if="success" class="alert alert-success mt-5" role="alert">
       {{ msg }}
     </div>
 
     <!-- Error Alert -->
-    <div v-if="error" class="alert alert-danger" role="alert">
+    <div v-if="error" class="alert alert-danger mt-5" role="alert">
       {{ msg }}
     </div>
 

@@ -4,7 +4,7 @@
             <div class="container-fluid mt-3 menu-container bg-light p-4 rounded">
     <h1 class="menu-title fs-2 fs-md-3">Profile</h1>
     <div class="d-flex align-items-center menu-user">
-        <img :src="'http://192.168.0.108:8084/api/images/' + name.profile_pic" alt="User Avatar" style="max-width: 50px; max-height: 50px; border-radius: 50%;" />
+        <img :src="'http://localhost:8084/api/images/' + name.profile_pic" alt="User Avatar" style="max-width: 50px; max-height: 50px; border-radius: 50%;" />
         <span class="text-black ms-2 me-3">{{ name.nickname }}</span>
     </div>
     <hr class="my-3">

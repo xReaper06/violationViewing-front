@@ -88,7 +88,7 @@
 
             const send_registration = async()=>{
     try {
-        const response = await axios.post('http://192.168.0.108:8084/api/send-registration-form',{
+        const response = await axios.post('http://localhost:8084/api/send-registration-form',{
             email:email.value
         })
         if(response){

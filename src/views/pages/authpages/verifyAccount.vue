@@ -72,7 +72,7 @@ const sendEmailtoVerify = async()=>{
         const config = { headers }
 
     try {
-        const response = await axios.post('http://192.168.0.108:8084/api/sendEmailtoVerify',{},config)
+        const response = await axios.post('http://localhost:8084/api/sendEmailtoVerify',{},config)
         if(response){
             console.log(response.data.msg)
             router.push('/main/login')

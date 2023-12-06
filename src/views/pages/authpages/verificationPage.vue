@@ -51,7 +51,7 @@ const handleVerificationEmail = async () => {
     try {
       const endteredOTP = otp.value.join('')
       console.log(parseInt(endteredOTP))
-        const response = await axios.post('http://192.168.0.108:8081/api/verifyEmail',
+        const response = await axios.post('http://localhost:8081/api/verifyEmail',
         {verification_code: parseInt(endteredOTP)},config)
             
         if (response) {

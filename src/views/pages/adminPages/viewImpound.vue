@@ -53,7 +53,7 @@
               class="evidence-item"
             >
               <img
-                :src="'http://192.168.0.108:8081/api/images/' + evidence.images"
+                :src="'http://localhost:8081/api/images/' + evidence.images"
                 alt="User Avatar"
                 style="max-width: 300px; max-height: 300px"
               />
