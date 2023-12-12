@@ -40,10 +40,34 @@
 
 <script setup>
 import { useRouter } from 'vue-router';
+import AuthenticationServices from '@/services/AuthenticationService'
+import {onMounted} from 'vue'
+const users = localStorage.getItem('user');
+const user = JSON.parse(users);
 
-  const router = useRouter();
-  
-  const isActive = (route) => router.currentRoute.value.path === route;
+
+const router = useRouter();
+
+const isActive = (route) => router.currentRoute.value.path === route;
+const getEnforcerInfo = async()=>{
+  try {
+    const response = await AuthenticationServices.getEnforcerInfo({
+      user_id:parseInt(user.id)
+    })
+    if(response){
+      if(response.data.info.length >0){
+        console.log('Info is not null')
+      }else{
+        router.push('/enforcer/enforcerInfo');
+      }
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
+onMounted(()=>{
+  getEnforcerInfo();
+})
 
 </script>
 

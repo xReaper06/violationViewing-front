@@ -7,13 +7,13 @@
                 <div class="card shadow p-3 mb-5 bg-white rounded">
                     <div class="mb-5">
                         <!-- Your SVG Code -->
-                        <a class="btn btn-primary" href="/enforcer/enforcerDashboard">
+                        <router-link class="btn btn-primary" to="/enforcer/enforcerDashboard">
                             <div class="d-flex align-items-center">
                                 <span class="me-2">
                                   <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-back-up" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 14l-4 -4l4 -4" /><path d="M5 10h11a4 4 0 1 1 0 8h-1" /></svg>
                                 </span>
                             </div>
-                        </a>
+                        </router-link>
                     </div>
                     <div class="text-center">
                         <h1 class="display-4">Impound Citation</h1>
@@ -27,69 +27,72 @@
                             <!-- Your Form Fields and Controls -->
                             <!-- Bootstrap form controls -->
                             <!-- Example: -->
-                            <div class="mb-3">
-                                <label for="ticket_no" class="form-label">Ticket number</label>
-                                <input v-model="formData.ticket_no" type="number" class="form-control" id="ticket_no"
-                                    required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="unit" class="form-label">Unit</label>
-                                <input v-model="formData.unit" type="text" class="form-control" id="unit" required>
-                            </div>
-                            <div v-for="i in violationCount" :key="i" class="mb-3">
-    <div class="row">
-        <div class="col-12 text-center">
-            <label for="'violations-' + i" class="form-label">Violations</label>
-            <select v-model="specific_violations.violations[i - 1]" class="form-select" required
-                :id="'violations-' + i">
-                <option v-for="violation in violationName" :key="violation" :value="violation">{{ violation }}
-                </option>
-            </select>
-        </div>
-        <div class="col-12 text-center">
-            <label for="'fines-' + i" class="form-label">Fine</label>
-            <input v-model="specific_violations.fines[i - 1]" type="number" class="form-control" required
-                :id="'fines-' + i">
-        </div>
-    </div>
-</div>
-                            <div class="mb-3">
-                                <label for="place_of_violation" class="form-label">Place of Violation</label>
-                                <select v-model="formData.place_of_violation" class="form-select"
-                                    id="place_of_violation" required>
-                                    <option value="" disabled>Select Place of Violation</option>
-                                    <option value="Poblacion">Poblacion</option>
-            <option value="Catarman">Catarman</option>
-            <option value="Ibabao">Ibabao</option>
-            <option value="Alegria">Alegria</option>
-            <option value="Gabi">Gabi</option>
-            <option value="Gilutungan">Gilutungan</option>
-            <option value="Pilipog">Pilipog</option>
-            <option value="Dapitan">Dapitan</option>
-            <option value="Buagsong">Buagsong</option>
-            <option value="Day-as">Day-as</option>
-            <option value="Bangbang">Bangbang</option>
-            <option value="Cogon">Cogon</option>
-                                    <!-- Add more options as needed -->
-                                </select>
-                            </div>
-                            <div class="mb-3">
-                                <label for="name_of_driver" class="form-label">Name of Driver</label>
-                                <input v-model="formData.name_of_driver" type="text" class="form-control"
-                                    id="name_of_driver" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="unit_empounded" class="form-label">Unit Empounded</label>
-                                <input type="file" class="form-control" id="unit_empounded"
-                                    @change="handleimageChange" accept="image/jpeg, image/jpg, image/png">
-                                <div v-if="showFile">
-                                    <img :src="fileView.preview" alt="Selected Image" style="max-width: 100px; max-height: 100px;">
-                                </div>
-                            </div>
-                            <!-- Add more form fields as needed -->
-                            <div class="mb-3">
-                                <button @click="impoundCitation" class="btn btn-primary">Submit</button>
-                            </div>
+                            <form id="formReset">
+
+                              <div class="mb-3">
+                                  <label for="ticket_no" class="form-label">Ticket number</label>
+                                  <input v-model="formData.ticket_no" type="number" class="form-control" id="ticket_no"
+                                      required>
+                              </div>
+                              <div class="mb-3">
+                                  <label for="unit" class="form-label">Unit</label>
+                                  <input v-model="formData.unit" type="text" class="form-control" id="unit" required>
+                              </div>
+                              <div v-for="i in violationCount" :key="i" class="mb-3">
+      <div class="row">
+          <div class="col-12 text-center">
+              <label for="'violations-' + i" class="form-label">Violations</label>
+              <select v-model="specific_violations.violations[i - 1]" class="form-select" required
+                  :id="'violations-' + i">
+                  <option v-for="violation in violationName" :key="violation" :value="violation">{{ violation }}
+                  </option>
+              </select>
+          </div>
+          <div class="col-12 text-center">
+              <label for="'fines-' + i" class="form-label">Fine</label>
+              <input v-model="specific_violations.fines[i - 1]" type="number" class="form-control" required
+                  :id="'fines-' + i">
+          </div>
+      </div>
+  </div>
+                              <div class="mb-3">
+                                  <label for="place_of_violation" class="form-label">Place of Violation</label>
+                                  <select v-model="formData.place_of_violation" class="form-select"
+                                      id="place_of_violation" required>
+                                      <option value="" disabled>Select Place of Violation</option>
+                                      <option value="Poblacion">Poblacion</option>
+              <option value="Catarman">Catarman</option>
+              <option value="Ibabao">Ibabao</option>
+              <option value="Alegria">Alegria</option>
+              <option value="Gabi">Gabi</option>
+              <option value="Gilutungan">Gilutungan</option>
+              <option value="Pilipog">Pilipog</option>
+              <option value="Dapitan">Dapitan</option>
+              <option value="Buagsong">Buagsong</option>
+              <option value="Day-as">Day-as</option>
+              <option value="Bangbang">Bangbang</option>
+              <option value="Cogon">Cogon</option>
+                                      <!-- Add more options as needed -->
+                                  </select>
+                              </div>
+                              <div class="mb-3">
+                                  <label for="name_of_driver" class="form-label">Name of Driver</label>
+                                  <input v-model="formData.name_of_driver" type="text" class="form-control"
+                                      id="name_of_driver" required>
+                              </div>
+                              <div class="mb-3">
+                                  <label for="unit_empounded" class="form-label">Unit Empounded</label>
+                                  <input type="file" class="form-control" id="unit_empounded"
+                                      @change="handleimageChange" accept="image/jpeg, image/jpg, image/png">
+                                  <div v-if="showFile">
+                                      <img :src="fileView.preview" alt="Selected Image" style="max-width: 100px; max-height: 100px;">
+                                  </div>
+                              </div>
+                              <!-- Add more form fields as needed -->
+                              <div class="mb-3">
+                                  <button @click="clickSubmit" class="btn btn-primary">Submit</button>
+                              </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -104,10 +107,10 @@
 <script setup>
 import AuthenticationService from '@/services/AuthenticationService';
 import { ref,watchEffect,reactive,onMounted } from 'vue'
+import Swal from 'sweetalert2';
 const fileView = ref({ preview: "" });
 const showFile = ref(false);
 const file = ref(null);
-const err = ref('')
 
 
 
@@ -171,7 +174,26 @@ onMounted(()=>{
   getAllViolations();
 })
 
+const clickSubmit = ()=>{
+    Swal.fire({
+        title: 'Are you sure?',
+        text: 'This action cannot be undone!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, proceed',
+        cancelButtonText: 'No, cancel',
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        reverseButtons: true,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          impoundCitation();
+        }
+      });
+}
+
         const impoundCitation = async()=>{
+          const form = document.querySelector('#formReset')
           user.value = localStorage.getItem('user')
           username.value = JSON.parse(user.value)
           const apend = new FormData();
@@ -195,12 +217,12 @@ onMounted(()=>{
               },
             });
             if (response) {
-              location.reload()
+            Swal.fire('Success', response.data.msg, 'success');
+              form.reset()
             }
             console.log(response.data.msg)
           } catch (error) {
-            err.value = error.response.data.msg
-            
+            Swal.fire('Error', error.response.data.msg, 'error');            
           }
         }
 

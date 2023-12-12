@@ -23,7 +23,7 @@
             <option value="Cogon">Cogon</option>
           </select>
         </div>
-        <div class="container">
+        <div class="container overflow-scroll" style="height: 350px;">
           <table class="table table-responsive table-light table-striped me-3">
             <thead>
               <tr>

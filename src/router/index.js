@@ -29,12 +29,14 @@ import enforcerNav from '../components/navigations/enforcerNav.vue'
 import adminNav from '../components/navigations/adminNav.vue'
 import unAuthorized from '../views/pages/NotFoundPages/unauthorizedPage.vue'
 import temporaryLock from '../views/pages/NotFoundPages/temporaryLocked.vue'
+import enforcerInfo from '../views/pages/enforcerPages/enforcerInfo.vue'
 import accountDeleted from '../views/pages/NotFoundPages/accountDeleted.vue'
 import adminEnforcerList from '../views/pages/adminPages/adminEnforcerList.vue'
 import adminUserList from '../views/pages/adminPages/adminUserList.vue'
 import adminLicenseNotVerified from '../views/pages/adminPages/adminLicenseNotVerified.vue'
 import adminLicenseVerified from '../views/pages/adminPages/adminLicenseVerified.vue'
 import adminViewLicense from '../views/pages/adminPages/adminViewLicense.vue'
+import adminAnnouncement from '../views/pages/adminPages/adminAnnouncement.vue'
 import addViolator from '../views/pages/adminPages/adminAddViolation.vue'
 import adminViolationList from '../views/pages/adminPages/adminViolationList.vue'
 import adminViolatorsList from '../views/pages/adminPages/adminViolatorsList.vue'
@@ -182,6 +184,11 @@ const routes = [
         component: impoundCitation,
       },
       {
+        path: "enforcerInfo",
+        name: "enforcerInfo",
+        component: enforcerInfo,
+      },
+      {
         path: "viewUserViolation/:violations_id",
         name: "viewUserViolation",
         component: viewUserViolation,
@@ -240,6 +247,11 @@ const routes = [
         path: "addViolator",
         name: "addViolator",
         component: addViolator,
+      },
+      {
+        path: "adminAnnouncement",
+        name: "adminAnnouncement",
+        component: adminAnnouncement,
       },
       {
         path: "viewImpound/:id,:is_paid",

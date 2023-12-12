@@ -144,8 +144,11 @@ import { onMounted } from 'vue';
   
         }, 1000);
         } catch (err) {
-          error.value = err.response.data.msg
-          loginloading.value = false; // Reset loading to false
+          loginloading.value = true; // Reset loading to false
+          setTimeout(() => {    
+            error.value = err.response.data.msg
+            loginloading.value = false; // Reset loading to false
+          }, 1000);
         }
       }
     }
@@ -154,7 +157,7 @@ import { onMounted } from 'vue';
       try {
         if (user.value !== '') {
           if (user.value.user_role === 'user') {
-            routes.push('/user/dashboard');
+            routes.push('/user/userDashboard');
           } else if (user.value.user_role == 'enforcer') {
             routes.push('/enforcer/enforcerDashboard');
           } else if (user.value.user_role == 'admin') {

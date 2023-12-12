@@ -81,6 +81,9 @@ export default{
     getAllViolatorsNormal(){
         return Api().get('/getAllViolatorsNormal')
     },
+    getAllPaidViolatorsNormal(){
+        return Api().get('/getAllPaidViolatorsNormal')
+    },
     normalCitation(credentials){
         return Api().post('/normalCitation',credentials)
     },
@@ -124,4 +127,31 @@ export default{
     adminImpoundCitation(credentials){
         return Api().post('/adminImpoundCitation',credentials)
     },
+    createAnnouncement(credentials){
+        return Api().post('/createAnnouncement',credentials);
+    },
+    updateAnnouncement(credentials){
+        return Api().post('/updateAnnouncement',credentials);
+    },
+    getAnnouncement(){
+        return Api().get('/getAnnouncement');
+    },
+    enforcerRecentAdded(credentials){
+        return Api().post('/enforcerRecentAdded',credentials);
+    },
+    removeAnnouncement(credentials){
+        return Api().post('/removeAnnouncement',credentials)
+    },
+    enforcerInfo(credentials){
+        return Api().post('/enforcerInfo',credentials)
+    },
+    getEnforcerInfo(credentials){
+        return Api().post('/getEnforcerInfo',credentials);
+    },
+    updateRecent(credentials){
+        return Api().post('/updateRecent',credentials);
+    },
+    getSpecificViolations(){
+        return Api().get('/getSpecificViolations');
+    }
 }

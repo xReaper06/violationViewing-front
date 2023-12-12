@@ -4,7 +4,6 @@
       <div class="mt-2 ms-3">
         <a href="/admin/adminViolatorsList" class="btn btn-primary">Go back</a>
       </div>
-
       <div>
         <p
           class="font-weight-bold mt-4 mb-4 text-center text-dark"
@@ -60,7 +59,7 @@
           </div>
         </div>
         <div v-if="props.is_paid == 0">
-                  <button class="btn btn-success" @click="Paid">
+                  <button class="btn btn-success" @click="payThisViolation">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-list-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3.5 5.5l1.5 1.5l2.5 -2.5" /><path d="M3.5 11.5l1.5 1.5l2.5 -2.5" /><path d="M3.5 17.5l1.5 1.5l2.5 -2.5" /><path d="M11 6l9 0" /><path d="M11 12l9 0" /><path d="M11 18l9 0" /></svg>
                   </button>
                 </div>
@@ -73,13 +72,14 @@
 import { ref, defineProps,onMounted,computed } from "vue";
 import AuthenticationService from "@/services/AuthenticationService";
 import {useRouter} from 'vue-router'
+import Swal from 'sweetalert2';
 
 const props = defineProps({
   id: Number,
   is_paid:Number,
 });
+const router = useRouter();
 
-const router = useRouter()
 
 const violations = ref([]);
 const evidences = ref([]);
@@ -104,23 +104,45 @@ const getUsersViolations = async () => {
 onMounted(() => {
   getUsersViolations();
 });
-const total = computed(()=>{
-            return fine.value
-        })
-
-
-        const Paid = async()=>{
+const payThisViolation = ()=>{
+  Swal.fire({
+        title: 'You want to pay This Violation?:',
+        text:'Enter the Or Number in the reciept',
+        input: 'number',
+        showCancelButton: true,
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No',
+        showLoaderOnConfirm: true,
+        preConfirm: (input) => {
+          return input;
+        },
+        allowOutsideClick: () => !Swal.isLoading(),
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Paid(result.value)
+        }
+      });
+}
+const Paid = async(data)=>{
 try {
   const response = await AuthenticationService.paidThisViolation({
-    violations_id:props.id
+    violations_id:parseInt(props.id),
+    or_no:data,
   })
   if(response){
-    router.push('/admin/adminViolatorsList')
+    setTimeout(() => {
+      Swal.fire('Success', response.data.msg, 'success');
+      router.push('/admin/adminViolatorsList')
+    }, 2000);
   }
 } catch (error) {
   console.log(error)
+  Swal.fire('Error', error.response.data.msg, 'error');
 }
 }
+const total = computed(()=>{
+            return fine.value
+        })
 </script>
 
 <style scoped></style>

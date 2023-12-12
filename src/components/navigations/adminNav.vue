@@ -38,6 +38,11 @@
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link active" :class="{ 'active-link': isActive('/admin/adminAnnouncement') }" href="/admin/adminAnnouncement">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-speakerphone" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 8a3 3 0 0 1 0 6" /><path d="M10 8v11a1 1 0 0 1 -1 1h-1a1 1 0 0 1 -1 -1v-5" /><path d="M12 8h0l4.524 -3.77a.9 .9 0 0 1 1.476 .692v12.156a.9 .9 0 0 1 -1.476 .692l-4.524 -3.77h-8a1 1 0 0 1 -1 -1v-4a1 1 0 0 1 1 -1h8" /></svg> Announcement
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" @click="clickUsers" href="#">
               <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" /><path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /></svg>   Users
             </a>
@@ -96,7 +101,7 @@ import { ref } from 'vue';
 
 const users = localStorage.getItem('user')
 const user = JSON.parse(users)
-const name = ref('');
+const name = ref();
 name.value = user
 const showUsers = ref(false);
 const showLicenseNav = ref(false);
@@ -121,7 +126,7 @@ const clickUsers = ()=>{
   const logout = async ()=>{
 try{  
     const authStore = useAuthStore();
-    const response = await AuthenticationService.logout({id:user.id});
+    const response = await AuthenticationService.logout({id:parseInt(name.value.id)});
     if(!response){
       console.log('Cannot Logout');
     }

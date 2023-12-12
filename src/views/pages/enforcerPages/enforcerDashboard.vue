@@ -35,27 +35,81 @@
             <button @click="showButtons" class="btn btn-primary mt-2 mb-3">Add Violators</button>
           </div>
           <div v-if="show">
-            <a href="/enforcer/normalCitation" class="btn btn-secondary">Normal Citation</a>
-            <a href="/enforcer/impoundCitation" class="btn btn-secondary">Impound Citation</a>
+            <router-link to="/enforcer/normalCitation" class="btn btn-secondary">Normal Citation</router-link>
+            <router-link to="/enforcer/impoundCitation" class="btn btn-secondary">Impound Citation</router-link>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
+<div class="container-fluid mb-5 pb-5">
+  <div class="card">
+    <div class="card-header">
+     <div class="card-title fs-4 text-center">
+       Recently Added
+     </div> 
+    </div>
+    <div class="card-body overflow-scroll" style="height: 350px;">
+      <table class="table table-responsive table-striped">
+        <thead>
+          <tr>
+            <th>Ticket Number</th>
+            <th>License No</th>
+            <th>Unit</th>
+            <th>Place of Violation</th>
+            <th>Date and Time</th>
+            <th>Name of the Driver</th>
+            <th>Type</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="recent">
+          <tr v-for="recentAdds in recentAdd" :key="recentAdds.id">
+        <td>{{recentAdds.ticket_no}}</td>
+        <td>{{recentAdds.license_no}}</td>
+        <td>{{recentAdds.unit}}</td>
+        <td>{{recentAdds.place_of_violation}}</td>
+        <td>{{recentAdds.date_and_time}}</td>
+        <td>{{recentAdds.name_of_driver}}</td>
+        <td>{{recentAdds.status}}</td>
+        <td>
+          <button type="button" class="btn btn-secondary" @click="OpenEditModal(recentAdds)">Edit</button>
+        </td>
+      </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div v-if="editModal">
+  <recent-edit-modal @close-modal="closeModal" :edit-value="editValue" :edit-modal="editModal"/>
+</div>
         </div>
     </div>
 </template>
 
 <script setup>
+import recentEditModal from '@/components/modals/recentEditModal.vue';
  import AuthenticationServices from '@/services/AuthenticationService'
   import { ref, onMounted,computed } from 'vue'
   
   const search = ref('');
       const violators = ref([]);
       const show = ref(false);
-  
+      const users = localStorage.getItem('user');
+      const user = JSON.parse(users)
+      const recentAdd = ref([])
+      const editModal = ref(false);
+      const editValue = ref([])
+      const closeModal = ()=>{
+        editModal.value = false
+        getRecentAdded();
+      }
+      const OpenEditModal = (recentAdd)=>{
+        editModal.value = true
+        editValue.value = JSON.stringify(recentAdd)
+      }
       const getViolators = async () => {
         try {
           const response = await AuthenticationServices.getAllViolators();
@@ -68,6 +122,7 @@
       };
       onMounted(() => {
         getViolators();
+        getRecentAdded();
       });
   
       const searchResults = computed(() => {
@@ -81,6 +136,18 @@
       const showButtons = async () => {
         show.value = !show.value;
       };
+      const getRecentAdded = async()=>{
+        try {
+          const response = await AuthenticationServices.enforcerRecentAdded({
+            apprehending_officer:user.nickname
+          })
+          if(response){
+            recentAdd.value = response.data.recentAdded
+          }
+        } catch (error) {
+          console.log(error)
+        }
+      }
 
 </script>
 

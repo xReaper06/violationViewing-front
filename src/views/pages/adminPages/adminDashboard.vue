@@ -1,82 +1,101 @@
         <template>
-  <div class="container-fluid mt-5">
-    <!-- Heading for the page -->
-    <h2 class="ms-5 mt-5">Home</h2>
-
-    <!-- Bootstrap row for layout -->
-    <div class="row mt-4">
-
-      <!-- Column for Verified Users -->
-      <div class="col-md-3 mb-4" style="height: 50px; width: 400px;">
-        <div class="card">
-          <div class="card-title">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-check text-success" width="50" height="50" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" /><path d="M6 21v-2a4 4 0 0 1 4 -4h4" /><path d="M15 19l2 2l4 -4" /></svg>
-                        Verified Users
-            <span class="badge badge-primary bg-dark text-white fs-6 mt-2 me-3">{{ countVerifiedusers }}</span>
+  <div class="container-fluid">
+    <div class="card mt-3 mb-3">
+      <div class="card-body">
+        <h2 class="ms-5 mt-2">Dashboard</h2>
+    
+        <!-- Bootstrap row for layout -->
+        <div class="row mt-4">
+    
+          <!-- Column for Verified Users -->
+          <div class="col-md-3 mb-4" style="height: 50px; width: 400px;">
+            <div class="card">
+              <div class="card-title">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-check text-success" width="50" height="50" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" /><path d="M6 21v-2a4 4 0 0 1 4 -4h4" /><path d="M15 19l2 2l4 -4" /></svg>
+                            Verified Users
+                <span class="badge badge-primary bg-dark text-white fs-6 mt-2 me-3">{{ countVerifiedusers }}</span>
+              </div>
+              <!-- Add content for Verified Users here -->
+            </div>
           </div>
-          <!-- Add content for Verified Users here -->
-        </div>
-      </div>
-
-      <!-- Column for Verified License -->
-      <div class="col-md-3 mb-4" style="height: 50px; width: 400px;">
-        <div class="card">
-          <div class="card-title">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-id-badge-2" width="50" height="50" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 12h3v4h-3z" /><path d="M10 6h-6a1 1 0 0 0 -1 1v12a1 1 0 0 0 1 1h16a1 1 0 0 0 1 -1v-12a1 1 0 0 0 -1 -1h-6" /><path d="M10 3m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v3a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z" /><path d="M14 16h2" /><path d="M14 12h4" /></svg>
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check text-success" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l5 5l10 -10" /></svg>
-            Verified License
-            <span class="badge badge-primary bg-dark text-white fs-6 mt-2 me-3">{{ License.length }}</span>
+    
+          <!-- Column for Verified License -->
+          <div class="col-md-3 mb-4" style="height: 50px; width: 400px;">
+            <div class="card">
+              <div class="card-title">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-id-badge-2" width="50" height="50" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 12h3v4h-3z" /><path d="M10 6h-6a1 1 0 0 0 -1 1v12a1 1 0 0 0 1 1h16a1 1 0 0 0 1 -1v-12a1 1 0 0 0 -1 -1h-6" /><path d="M10 3m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v3a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z" /><path d="M14 16h2" /><path d="M14 12h4" /></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check text-success" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l5 5l10 -10" /></svg>
+                Verified License
+                <span class="badge badge-primary bg-dark text-white fs-6 mt-2 me-3">{{ License.length }}</span>
+              </div>
+              <!-- Add content for Verified License here -->
+            </div>
           </div>
-          <!-- Add content for Verified License here -->
-        </div>
-      </div>
-
-      <!-- Column for License Need To Verify -->
-      <div class="col-md-3 mb-5" style="height: 50px; width: 400px;">
-        <div class="card">
-          <div class="card-title">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-id-badge-2" width="50" height="50" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 12h3v4h-3z" /><path d="M10 6h-6a1 1 0 0 0 -1 1v12a1 1 0 0 0 1 1h16a1 1 0 0 0 1 -1v-12a1 1 0 0 0 -1 -1h-6" /><path d="M10 3m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v3a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z" /><path d="M14 16h2" /><path d="M14 12h4" /></svg>
-            License Need To Verify
-            <span class="badge badge-primary bg-dark text-white fs-6 mt-2 me-3">{{ NotVerified.length }}</span>
-            <router-link to="/admin/adminLicenseNotVerified" class="btn btn-primary mt-2">View</router-link>
+    
+          <!-- Column for License Need To Verify -->
+          <div class="col-md-3 mb-5" style="height: 50px; width: 400px;">
+            <div class="card">
+              <div class="card-title">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-id-badge-2" width="50" height="50" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 12h3v4h-3z" /><path d="M10 6h-6a1 1 0 0 0 -1 1v12a1 1 0 0 0 1 1h16a1 1 0 0 0 1 -1v-12a1 1 0 0 0 -1 -1h-6" /><path d="M10 3m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v3a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z" /><path d="M14 16h2" /><path d="M14 12h4" /></svg>
+                License Need To Verify
+                <span class="badge badge-primary bg-dark text-white fs-6 mt-2 me-3">{{ NotVerified.length }}</span>
+                <router-link to="/admin/adminLicenseNotVerified" class="btn btn-primary mt-2">View</router-link>
+              </div>
+              <!-- Add content for License Need To Verify here -->
+            </div>
           </div>
-          <!-- Add content for License Need To Verify here -->
+    
+          <div class="col-md-3 mb-5" style="height: 50px; width: 400px;">
+            <div class="card">
+              <div class="card-title">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users" width="50" height="50" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" /><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /><path d="M21 21v-2a4 4 0 0 0 -3 -3.85" /></svg>            All Enforcers
+                <span class="badge badge-primary bg-dark text-white fs-6 mt-2 me-3">{{ enforcers.length }}</span>
+              </div>
+              <!-- Add content for License Need To Verify here -->
+            </div>
+          </div>
+    
+          <!-- Column for Violators or Users (based on showViolations) -->
+          <!-- Column for Violations (if showViolations is true) -->
+          <div class="col-md-8 mb-4">
+            <div class="card">
+              <h6 class="text-center">Violations</h6>
+              <canvas id="lineChart" height="50" width="150"></canvas>
+            </div>
+          </div>
+    
+          <!-- Column for Users (if showUsers is true) -->
+          <div class="col-md-4 mb-4">
+            <div class="card">
+              <h6 class="text-center">Users</h6>
+              <canvas id="pieChart" style="height: 100px; width: 100px;"></canvas>
+            </div>
+          </div>
+          <div class="col-md-8 mb-4">
+            <div class="card">
+              <h6 class="text-center">violations By Year</h6>
+              <select name="year" id="year" v-model="year" @change="getAllViolationsByYear" class="form-select w-25">
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
+                <option value="2020">2020</option>
+                <option value="2019">2019</option>
+                <option value="2018">2018</option>
+                <option value="2017">2017</option>
+              </select>
+              <canvas id="barChart" style=" width: 100px;"></canvas>
+            </div>
+          </div>
+          <div class="col-md-8 mb-4">
+            <div class="card">
+              <h6 class="text-center">Violations Data by List</h6>
+              <canvas id="lineChartViolation" height="50" width="150"></canvas>
+            </div>
+          </div>
         </div>
       </div>
-
-      <!-- Column for Violators or Users (based on showViolations) -->
-      <!-- Column for Violations (if showViolations is true) -->
-      <div class="col-md-8 mb-4">
-        <div class="card">
-          <h6 class="text-center">Violations</h6>
-          <canvas id="lineChart" height="50" width="150"></canvas>
-        </div>
-      </div>
-
-      <!-- Column for Users (if showUsers is true) -->
-      <div class="col-md-4 mb-4">
-        <div class="card">
-          <h6 class="text-center">Users</h6>
-          <canvas id="pieChart" style="height: 100px; width: 100px;"></canvas>
-        </div>
-      </div>
-      <div class="col-md-8 mb-4">
-        <div class="card">
-          <h6 class="text-center">violations By Year</h6>
-          <select name="year" id="year" v-model="year" @change="getAllViolationsByYear">
-            <option value="2023">2023</option>
-            <option value="2022">2022</option>
-            <option value="2021">2021</option>
-            <option value="2020">2020</option>
-            <option value="2019">2019</option>
-            <option value="2018">2018</option>
-            <option value="2017">2017</option>
-          </select>
-          <canvas id="barChart" style=" width: 100px;"></canvas>
-        </div>
-      </div>
-
     </div>
+    <!-- Heading for the page -->
   </div>
 </template>
 
@@ -89,9 +108,12 @@ import Chart from 'chart.js/auto';
 const users = ref([]);
 const violators = ref([])
 const License = ref([])
+const enforcers = ref([])
 const NotVerified = ref([]);
 const violationsByYear = ref([]);
-const year = ref('2023')
+const year = ref('2023');
+const violationsList = ref([]);
+const violatorsListData = ref([])
 let countImpoundValueByYear = ref('');
 let countNormalValueByYear = ref('')
 let countImpoundValue = ref('');
@@ -114,6 +136,16 @@ const getAllViolationsByYear = onMounted(async()=>{
   }
 })
 
+const getAllEnforcers = async()=>{
+  try {
+    const response = await AuthenticationService.getAllEnforcer()
+    if(response){
+      enforcers.value = response.data.allEnforcers
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 const getAllViolations = async ()=>{
   try {
@@ -127,6 +159,40 @@ const getAllViolations = async ()=>{
     console.log(error)
   }
 }
+const getAllViolationsList = async () => {
+  try {
+    const response = await AuthenticationService.getAllViolationList();
+
+    if (response && response.data && response.data.violationList) {
+      response.data.violationList.map(data => {
+        violationsList.value.push(data.name);
+      });
+      console.log(violationsList.value);
+    } else {
+      console.log('Violations list is undefined or empty.');
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const getViolationData = async () => {
+  try {
+    const response = await AuthenticationService.getSpecificViolations();
+    if (response) {
+      for (let i = 0; i < violationsList.value.length; i++) {
+        violatorsListData.value.push(
+          response.data.specific_violations.filter((data) => {
+            return data.name === violationsList.value[i];
+          }).length
+        );
+      }
+      console.log(violatorsListData.value);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 const getAllUsers = async()=>{
   try {
@@ -484,6 +550,9 @@ onMounted(async()=>{
   await getAllLicense();
  await getAllNotVerified();
   await getAllViolations();
+  await getAllViolationsList()
+  await getViolationData();
+  await getAllEnforcers()
   const linebardata = {
   labels: ['Poblacion', 'Catarman', 'Ibabao', 'Alegria', 'Gabi', 'Gilutungan', 'Pilipog', 'Dapitan', 'Buagsong', 'Day-as', 'Bangbang', 'Cogon'],
   datasets: [
@@ -502,8 +571,6 @@ onMounted(async()=>{
   ],
 };
 
-
-
 const linebarconfig = {
   type: 'line',
   data: linebardata,
@@ -512,6 +579,42 @@ const linebarconfig = {
 
   const linebar = document.getElementById('lineChart');
   new Chart(linebar, linebarconfig); // Create a new chart instance
+const linebarViolationdata = {
+  labels: violationsList.value,
+  datasets: [
+    {
+      label: 'Violation Data by implemented City Ordinance',
+      data: violatorsListData.value,
+      borderColor: 'yellow',
+      backgroundColor: 'yellow',
+      fill: false,
+    },
+  ],
+};
+
+const linebarViolationconfig = {
+  type: 'bar',
+  data: linebarViolationdata,
+  options: {},
+};
+
+  const linebarViolation = document.getElementById('lineChartViolation');
+
+  if (linebarViolation) {
+  // Get the existing chart instance
+  let existingChartViolation = Chart.getChart(linebarViolation);
+
+  // If the chart instance exists, destroy it
+  if (existingChartViolation) {
+    existingChartViolation.destroy();
+  }
+
+  // Create a new chart and assign it to the 'chart' property
+  let violationchart = new Chart(linebarViolation, linebarViolationconfig);
+  console.log(violationchart);
+} else {
+  console.error("Canvas element with id 'lineChartViolation' not found.");
+}
 
   await getAllUsers();
   const violatorData = [{

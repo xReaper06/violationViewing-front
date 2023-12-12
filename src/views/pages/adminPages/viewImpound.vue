@@ -61,7 +61,7 @@
           </div>
         </div>
         <div v-if="props.is_paid == 0">
-                  <button class="btn btn-success" @click="Paid">
+                  <button class="btn btn-success" @click="paidThis">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-list-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3.5 5.5l1.5 1.5l2.5 -2.5" /><path d="M3.5 11.5l1.5 1.5l2.5 -2.5" /><path d="M3.5 17.5l1.5 1.5l2.5 -2.5" /><path d="M11 6l9 0" /><path d="M11 12l9 0" /><path d="M11 18l9 0" /></svg>
                   </button>
                 </div>
@@ -73,6 +73,7 @@
 <script setup>
 import AuthenticationService from "@/services/AuthenticationService";
 import { onMounted, defineProps, ref,computed } from "vue";
+import Swal from 'sweetalert2';
 import { useRouter } from "vue-router";
 
 const props = defineProps({
@@ -95,13 +96,30 @@ const getUsersViolations = async () => {
       evidences.value = response.data.evidences;
 
       violations.value.forEach((violation)=>{
-                        fine.value += parseInt(violation.fine)
+        fine.value += parseInt(violation.fine)
     })
     }
   } catch (error) {
     console.log(error);
   }
 };
+const paidThis = ()=>{
+  Swal.fire({
+        title: 'Are you sure?',
+        text: 'This action cannot be undone!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, proceed',
+        cancelButtonText: 'No, cancel',
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        reverseButtons: true,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Paid()
+        }
+      });
+}
 onMounted(() => {
   console.log(props)
   getUsersViolations();
@@ -116,11 +134,14 @@ try {
     violations_id:props.id
   })
   if(response){
-    router.push('/admin/adminViolatorsList')
-
+    setTimeout(() => {   
+      Swal.fire('Success', 'Request sent successfully!', 'success');
+      router.push('/admin/adminViolatorsList')
+    }, 2000);
   }
 } catch (error) {
   console.log(error)
+  Swal.fire('Error', 'There was an error with the request.', 'error');
 }
 }
 </script>

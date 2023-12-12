@@ -101,7 +101,7 @@ import AuthenticationService from '@/services/AuthenticationService';
       username.value = JSON.parse(user.value);
       name.value = username.value;
       
-    const id = ref('')
+    const id = ref()
 
 const logout = async ()=>{
 try{  
@@ -134,7 +134,7 @@ const isActive = (route) => router.currentRoute.value.path === route;
 <style scoped>
 /* You can add custom styles here if needed */
 .active-link {
-  background-color: #e9e9e9;
+  background-color: #341442;
 }
 .nav-link:hover{
   background-color: rgb(22, 21, 21);
