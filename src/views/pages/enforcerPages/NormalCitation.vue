@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <div class="container-fluid mt-3">
+      <div class="container-fluid mt-3 mb-lg-5">
         <div class="row justify-content-center">
           <div class="col-sm-10 col-md-8">
             <div class="card shadow p-3 mb-5 bg-white rounded">
@@ -40,7 +40,6 @@
                     <!-- Your Form Fields and Controls -->
                     <!-- Bootstrap form controls -->
                     <!-- Example: -->
-                    <form id="formReset">
   
                       <div class="mb-3">
                         <label for="ticket_no" class="form-label"
@@ -51,7 +50,8 @@
                           type="number"
                           class="form-control"
                           id="ticket_no"
-                          required
+                          placeholder="Enter the ticker number"
+                          required="required"
                         />
                       </div>
                       <div class="mb-3">
@@ -63,7 +63,9 @@
                           type="text"
                           class="form-control"
                           id="license_no"
-                          required
+                          placeholder="Enter the licence Number"
+                          required="required"
+
                         />
                       </div>
                       <div class="mb-3">
@@ -73,7 +75,21 @@
                           type="text"
                           class="form-control"
                           id="unit"
-                          required
+                          placeholder="Enter the Unit"
+                          required="required"
+                          
+                        />
+                      </div>
+                      <div class="mb-3">
+                        <label for="unit" class="form-label">Plate no.</label>
+                        <input
+                          v-model="formData.plate_no"
+                          type="text"
+                          class="form-control"
+                          id="plate no"
+                          placeholder="Enter the plate number"
+                          required="required"
+                          
                         />
                       </div>
                       <div v-for="i in violationCount" :key="i" class="mb-3">
@@ -88,6 +104,7 @@
                               required
                               :id="'violations-' + i"
                             >
+                            <option value="" selected disabled>Select Violations</option>
                               <option
                                 v-for="violation in violationName"
                                 :key="violation"
@@ -107,6 +124,7 @@
                               class="form-control"
                               required
                               :id="'fines-' + i"
+                              placeholder="Enter the fines"
                             />
                           </div>
                         </div>
@@ -119,9 +137,9 @@
                           v-model="formData.place_of_violation"
                           class="form-select"
                           id="place_of_violation"
-                          required
+                          required="required"
                         >
-                          <option value="" disabled>
+                          <option value="" disabled selected>
                             Select Place of Violation
                           </option>
                           <option value="Poblacion">Poblacion</option>
@@ -148,7 +166,9 @@
                           type="text"
                           class="form-control"
                           id="name_of_driver"
-                          required
+                          placeholder="Enter the name of the Driver/Rider"
+                          required="required"
+                          
                         />
                       </div>
                       <div class="mb-3">
@@ -159,6 +179,7 @@
                           type="file"
                           class="form-control"
                           id="unit_empounded"
+                          placeholder="Choose the picture of Evidences"
                           @change="handleimageChange"
                           accept="image/jpeg, image/jpg, image/png"
                           multiple
@@ -181,7 +202,6 @@
                           Submit
                         </button>
                       </div>
-                    </form>
                   </div>
                 </div>
               </div>
@@ -209,6 +229,7 @@ const formData = ref({
   ticket_no: "",
   license_no: "",
   unit: "",
+  plate_no: "",
   place_of_violation: "",
   name_of_driver: "",
 });
@@ -274,6 +295,7 @@ const username = ref("");
 
 
 const clickSubmit = ()=>{
+  if(formData.value.ticket_no != '' ||formData.value.license_no != ''|| formData.value.unit != '' || formData.value.place_of_violation != '' || formData.value.name_of_driver != ''){
     Swal.fire({
         title: 'Are you sure?',
         text: 'This action cannot be undone!',
@@ -289,10 +311,13 @@ const clickSubmit = ()=>{
           normalCitation();
         }
       });
+  }else{
+    Swal.fire('Error', 'Please fill in empty fields', 'error');
+  }
 }
 //handle citation request
 const normalCitation = async () => {
-  const form = document.querySelector('#formReset')
+  if(formData.value.ticket_no != '' ||formData.value.license_no != ''|| formData.value.unit != '' || formData.value.place_of_violation != '' || formData.value.name_of_driver != ''){
   user.value = localStorage.getItem("user");
   username.value = JSON.parse(user.value);
   const apend = new FormData();
@@ -308,6 +333,7 @@ const normalCitation = async () => {
   apend.append("ticket_no", formData.value.ticket_no);
   apend.append("license_no", formData.value.license_no);
   apend.append("unit", formData.value.unit);
+  apend.append("plate_no", formData.value.plate_no);
   apend.append("place_of_violation", formData.value.place_of_violation);
   apend.append("name_of_driver", formData.value.name_of_driver);
   apend.append("apprehending_officer", username.value.nickname);
@@ -319,12 +345,22 @@ const normalCitation = async () => {
     });
     if (response) {
       Swal.fire('Success', response.data.msg, 'success');
-              form.reset()
+      formData.value.ticket_no = ''
+      formData.value.license_no = ''
+      formData.value.unit = ''
+      formData.value.plate_no = ''
+      formData.value.place_of_violation = ''
+      formData.value.name_of_driver = ''
+      specific_violations.violations = []
+      specific_violations.fines = []
     }
   } catch (error) {
-    Swal.fire('Error', error.response.data.msg, 'error');            
-
+    Swal.fire('Error', 'Please fill in empty fields', 'error');
   }
+}else{
+  Swal.fire('Error', 'Please fill in empty fields', 'error');
+
+}
 };
 </script>
 

@@ -15,45 +15,53 @@
   <div v-else class="container mt-5 mb-5">
     <div v-if="showLicense" class="container">
       <div class="card mx-auto background-body">
-        <div class="d-flex flex-row justify-content-center mt-3">
-          <img src="@/assets/phil-flag.jpg" alt="" style="height: 100px; width: 100px; margin-right: 50px;">
-          <div class="d-flex flex-column">
-            <div class="fs-2 text-center">Republic of the Philippines</div>
-            <div class="fs-3 text-center">Department of Transportation</div>
-            <div class="fs-3 text-center">Land Transportation Office</div>
-            <h1 class="text-center">MY LICENSE</h1>
-          </div>
-          <img src="@/assets/LTO.jpg" alt="" style="height: 100px; width: 100px; margin-left: 50px;">
+    <div class="container mt-3">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-auto">
+                <img src="@/assets/phil-flag.jpg" alt="" style="max-height: 100px; max-width: 100px;" class="card-img-top img-fluid">
+            </div>
+            <div class="col-md-auto text-center">
+                <div class="fs-2">Republic of the Philippines</div>
+                <div class="fs-3">Department of Transportation</div>
+                <div class="fs-3">Land Transportation Office</div>
+                <h1 class="text-center">MY LICENSE</h1>
+            </div>
+            <div class="col-md-auto">
+                <img src="@/assets/LTO.jpg" alt="" style="max-height: 100px; max-width: 100px;" class="card-img-top img-fluid">
+            </div>
         </div>
-            <div class="d-flex flex-row justify-content-center">
-              <div class="d-flex flex-column me-5 mt-5">
-                <img :src="'http://localhost:8081/api/images/' + myLicense[0].front_pic" class="card-img-top" style="max-height: 500px; max-width: 500px; margin-top: 10px; margin-left: 10px; margin-bottom: 10px; margin-right: 50px;" alt="License Image">
-              </div>
-                <div class="d-flex flex-column ms-4 mt-5">
-                      <div class="smalltext">
-                        Last Name, First Name, Middle Name,
-                      <div class="card-title fs-4">
-                        <strong>{{ formattedName }}</strong>
-                      </div>
-                      </div>
-                  <div class="d-flex flex-row">
+
+        <div class="row justify-content-center mt-3 mb-4">
+            <div class="col-lg-5 pe-5 ps-lg-5">
+                <img :src="'http://localhost:8081/api/images/' + myLicense[0].front_pic" class="card-img-top img-fluid ms-lg-5" 
+                    style="max-height: 500px; max-width: 100%; min-height: 100px; min-width: 100px; margin-top: 10px; margin-bottom: 10px;"
+                    alt="License Image">
+            </div>
+            <div class="col-lg-4 mt-5 text-fluid">
+                <div class="smalltext">
+                    Last Name, First Name, Middle Name,
+                </div>
+                <div class="card-title fs-4">
+                    <strong>{{ formattedName }}</strong>
+                </div>
+                <div class="d-flex flex-row">
                     <div class="d-flex flex-column fs-6 me-3">
-                      <div class="smalltext">
-                        Nationality
-                          <div class="fs-6">
-                            {{ myLicense[0].nationality }}
-                          </div>
-                      </div>
-                      <span class="me-4"></span>
+                        <div class="smalltext">
+                            Nationality
+                            <div class="fs-6">
+                                {{ myLicense[0].nationality }}
+                            </div>
+                        </div>
+                        <span class="me-4"></span>
                     </div>
                     <div class="d-flex flex-column fs-6 me-3">
-                      <div class="smalltext">
-                        Sex
-                       <div class="fs-6">
-                         {{ myLicense[0].sex }}
-                       </div> 
-                      </div>
-                      <span class="me-4"></span>
+                        <div class="smalltext">
+                            Sex
+                            <div class="fs-6">
+                                {{ myLicense[0].sex }}
+                            </div>
+                        </div>
+                        <span class="me-4"></span>
                     </div>
                     <div class="d-flex flex-column fs-6 me-3">
                       <div class="smalltext">        
@@ -64,14 +72,14 @@
                     </div>                
                       <span class="me-4"></span>
                     </div>
-                    <div class="d-flex flex-column fs-6 me-3">
+                    <div class="d-flex flex-column fs-6 me-1">
                       <div class="smalltext">
                         Weight(kg)
                         <div class="fs-6">
                           {{ myLicense[0].weight }}
                         </div>            
                       </div>
-                      <span class="me-4"></span>
+                      <span class="me-2"></span>
                     </div>
                     <div class="d-flex flex-column fs-6 me-3">
                       <div class="smalltext">
@@ -147,11 +155,12 @@
                         </div>
                       </div>
                     </div>
+                    </div>
+                    </div>
+                    </div>
                   </div>
-                </div>
-</div>
-</div>
-</div>
+                  </div>
+                  </div>
 
         <div v-else class="container">
           

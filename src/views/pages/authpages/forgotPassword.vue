@@ -13,7 +13,7 @@
       <p style="font-size: 24px; font-weight: bold; text-align: center; color: #007BFF;">Forgot Password</p>
 
       <!-- Bootstrap form -->
-      <form @submit.prevent="handleForgotPassword" class="needs-validation" novalidate>
+      <form class="needs-validation" novalidate>
 
         <!-- Bootstrap container for v-text-field -->
         <div class="form-group">

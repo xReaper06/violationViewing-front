@@ -74,7 +74,7 @@ const submitInfo = async()=>{
             sex:sex.value
         })
         if(response){
-            Swal.fire('Success', response.data.msg, 'success');
+            Swal.fire('Success', response.msg, 'success');
             router.push('/enforcer/enforcerDashboard');
         }
     } catch (error) {

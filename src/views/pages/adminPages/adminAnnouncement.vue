@@ -7,7 +7,7 @@
             <div v-if="showAddAnnouncement">
                 <div class="form-group">
                 <label for="title" class="form-label">Title</label>
-                <input type="text" id="title" name="title" v-model="title" class="form-control" required>
+                <input type="text" id="title" name="title" v-model="title" placeholder="Enter the Title" class="form-control" required>
                 <label for="content" class="form-label">Content</label>
                 <textarea
       id="announcementContent"

@@ -47,13 +47,13 @@
       <div class="row mt-3">
         <div class="col-md-4 col-lg-4 offset-md-4">
           <label for="licenseNumber" class="form-label">License Number</label>
-          <input type="text" class="form-control" v-model="license_no" required>
+          <input type="text" class="form-control" placeholder="Enter your License number" v-model="license_no" required>
         </div>
           <!-- Expiration Date Input -->
   <div class="row mt-3">
     <div class="col-md-4 col-lg-4 offset-md-4">
       <label for="expirationDate" class="form-label">Expiration Date</label>
-      <input type="date" class="form-control" v-model="expiration_date" required>
+      <input type="date" class="form-control" placeholder="Enter The expiration Date" v-model="expiration_date" required>
     </div>
   </div>
 
@@ -61,7 +61,7 @@
   <div class="row mt-3">
     <div class="col-md-4 col-lg-4 offset-md-4">
       <label for="agencyCode" class="form-label">Agency Code</label>
-      <input type="text" class="form-control" v-model="agency_code" required>
+      <input type="text" class="form-control" placeholder="Enter The Agency Code" v-model="agency_code" required>
     </div>
   </div>
 
@@ -70,6 +70,7 @@
     <div class="col-md-4 col-lg-4 offset-md-4">
       <label for="bloodType" class="form-label">Blood Type</label>
       <select class="form-control" v-model="blood_type">
+        <option value="" selected disabled>Select Your Blood Type</option>
         <option value="A+">A+</option>
         <option value="A-">A-</option>
         <option value="B+">B+</option>
@@ -86,7 +87,7 @@
   <div class="row mt-3">
     <div class="col-md-4 col-lg-4 offset-md-4">
       <label for="eyeColor" class="form-label">Eye Color</label>
-      <input type="text" class="form-control" v-model="eye_color" required>
+      <input type="text" class="form-control" placeholder="Enter Eye Color" v-model="eye_color" required>
     </div>
   </div>
 
@@ -95,6 +96,7 @@
     <div class="col-md-4 col-lg-4 offset-md-4">
       <label for="restriction" class="form-label">Restriction</label>
       <select class="form-control" v-model="restrictions">
+        <option value="" selected disabled>Select the Restriction</option>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -108,7 +110,7 @@
   <div class="row mt-3">
     <div class="col-md-4 col-lg-4 offset-md-4">
       <label for="conditions" class="form-label">Conditions</label>
-      <input type="text" class="form-control" v-model="conditions" required>
+      <input type="text" class="form-control" placeholder="Enter the Condition you have" v-model="conditions" required>
     </div>
   </div>
 
@@ -116,7 +118,7 @@
   <div class="row mt-3">
     <div class="col-md-4 col-lg-4 offset-md-4">
       <label for="firstName" class="form-label">First Name</label>
-      <input type="text" class="form-control" v-model="first_name" required>
+      <input type="text" class="form-control" placeholder="Enter your First name" v-model="first_name" required>
     </div>
   </div>
 
@@ -124,7 +126,7 @@
   <div class="row mt-3">
     <div class="col-md-4 col-lg-4 offset-md-4">
       <label for="lastName" class="form-label">Last Name</label>
-      <input type="text" class="form-control" v-model="last_name" required>
+      <input type="text" class="form-control" placeholder="Enter your Last name" v-model="last_name" required>
     </div>
   </div>
 
@@ -132,7 +134,7 @@
   <div class="row mt-3">
     <div class="col-md-4 col-lg-4 offset-md-4">
       <label for="middleName" class="form-label">Middle Name</label>
-      <input type="text" class="form-control" v-model="middle_name" required>
+      <input type="text" class="form-control" placeholder="Enter Your Middle name also add a Space then put your extension name like Jr/Sr." v-model="middle_name" required>
     </div>
   </div>
 
@@ -140,7 +142,7 @@
   <div class="row mt-3">
     <div class="col-md-4 col-lg-4 offset-md-4">
       <label for="nationality" class="form-label">Nationality</label>
-      <input type="text" class="form-control" v-model="nationality" required>
+      <input type="text" class="form-control" placeholder="Enter your Nationality" v-model="nationality" required>
     </div>
   </div>
 
@@ -149,6 +151,7 @@
     <div class="col-md-4 col-lg-4 offset-md-4">
       <label for="sex" class="form-label">Sex</label>
       <select class="form-control" v-model="sex">
+        <option value="" selected disabled>Select your Sex</option>
         <option value="Male">Male</option>
         <option value="Female">Female</option>
       </select>
@@ -167,7 +170,7 @@
   <div class="row mt-3">
     <div class="col-md-4 col-lg-4 offset-md-4">
       <label for="weight" class="form-label">Weight in Kg</label>
-      <input type="number" class="form-control" v-model="weight" required>
+      <input type="number" class="form-control" placeholder="Enter your Weight in Kg" v-model="weight" required>
     </div>
   </div>
 
@@ -175,7 +178,7 @@
   <div class="row mt-3">
     <div class="col-md-4 col-lg-4 offset-md-4">
       <label for="height" class="form-label">Height in Meter</label>
-      <input type="number" class="form-control" v-model="height" required>
+      <input type="number" class="form-control" placeholder="Enter your heigh in meter" v-model="height" required>
     </div>
   </div>
 
@@ -183,7 +186,7 @@
   <div class="row mt-3">
     <div class="col-md-4 col-lg-4 offset-md-4">
       <label for="street" class="form-label">Street/Sitio</label>
-      <input type="text" class="form-control" v-model="street" required>
+      <input type="text" class="form-control" placeholder="Enter the Street/Sitio you live" v-model="street" required>
     </div>
   </div>
 
@@ -191,7 +194,7 @@
   <div class="row mt-3">
     <div class="col-md-4 col-lg-4 offset-md-4">
       <label for="baranggay" class="form-label">Baranggay</label>
-      <input type="text" class="form-control" v-model="baranggay" required>
+      <input type="text" class="form-control" placeholder="Enter the baranggay" v-model="baranggay" required>
     </div>
   </div>
 
@@ -199,14 +202,14 @@
   <div class="row mt-3">
     <div class="col-md-4 col-lg-4 offset-md-4">
       <label for="city" class="form-label">City</label>
-      <input type="text" class="form-control" v-model="city" required>
+      <input type="text" class="form-control" placeholder="Enter the city" v-model="city" required>
     </div>
   </div>
           <!-- Province Input -->
           <div class="row mt-3">
             <div class="col-md-4 col-lg-4 offset-md-4">
               <label for="province" class="form-label">Province</label>
-              <input type="text" class="form-control" v-model="province" required />
+              <input type="text" class="form-control" placeholder="Enter the province" v-model="province" required />
             </div>
           </div>
   

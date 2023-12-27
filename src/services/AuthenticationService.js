@@ -75,6 +75,9 @@ export default{
     getAllViolators(){
         return Api().get('/getAllViolators')
     },
+    getAllViolatorsNotPaid(){
+        return Api().get('/getAllViolatorsNotPaid')
+    },
     getAllViolatorsImpound(){
         return Api().get('/getAllViolatorsImpound')
     },
@@ -153,5 +156,8 @@ export default{
     },
     getSpecificViolations(){
         return Api().get('/getSpecificViolations');
+    },
+    deleteThisViolation($id){
+        return Api().post('/deleteThisViolation',$id);
     }
 }

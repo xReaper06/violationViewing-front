@@ -94,7 +94,9 @@ import { useRoute,useRouter } from 'vue-router';
     const loading = ref(false)
     const nicknameHasSpaces = ref(false);
     const nicknameMsg = ref(null);
+    const success = ref(false)
     const passmsg = ref(null);
+    const error = ref(false)
     const passmsgVisible = ref(false)
     const route = useRoute();
     const router = useRouter();
@@ -148,11 +150,13 @@ import { useRoute,useRouter } from 'vue-router';
         const config = { headers }
       loading.value = true;
       if (password.value !== confirm_password.value) {
+        error.value = true;
         msg.value = "Password doesn't match";
         loading.value = false;
       } else {
         try {
           if(email.value === '' || nickname.value === '' || password.value === '' || confirm_password.value === ''){
+        error.value = true;
             msg.value = 'Empty Inputs';
         loading.value = false;
           }else{
@@ -163,6 +167,8 @@ import { useRoute,useRouter } from 'vue-router';
             },config);
             if(response){
               setTimeout(() => {
+        success.value = true;
+
                 email.value= ''
                 nickname.value = '';
                 password.value = '';
@@ -175,6 +181,7 @@ import { useRoute,useRouter } from 'vue-router';
           }
         } catch (err) {
           console.error(err);
+        error.value = true;
           msg.value = err.response.data.msg;
         loading.value = false;
         }

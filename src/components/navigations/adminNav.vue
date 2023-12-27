@@ -27,58 +27,58 @@
         <ul class="nav flex-column">
           <!-- Add your sidebar items here -->
           <li class="nav-item">
-            <a class="nav-link active" href="#">
+            <router-link class="nav-link active" to="#">
               <img :src="`http://localhost:8084/api/images/${name.profile_pic}`" class="img-fluid" style="width: 40px; height: 40px; border-radius: 50%;" alt="">
               {{ name.nickname }}
-            </a>
+            </router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" :class="{ 'active-link': isActive('/admin/adminDashboard') }" href="/admin/adminDashboard">
+            <router-link class="nav-link active" :class="{ 'active-link': isActive('/admin/adminDashboard') }" to="/admin/adminDashboard">
               <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-report-analytics" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" /><path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" /><path d="M9 17v-5" /><path d="M12 17v-1" /><path d="M15 17v-3" /></svg> Admin Panel
-            </a>
+            </router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" :class="{ 'active-link': isActive('/admin/adminAnnouncement') }" href="/admin/adminAnnouncement">
+            <router-link class="nav-link active" :class="{ 'active-link': isActive('/admin/adminAnnouncement') }" to="/admin/adminAnnouncement">
               <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-speakerphone" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 8a3 3 0 0 1 0 6" /><path d="M10 8v11a1 1 0 0 1 -1 1h-1a1 1 0 0 1 -1 -1v-5" /><path d="M12 8h0l4.524 -3.77a.9 .9 0 0 1 1.476 .692v12.156a.9 .9 0 0 1 -1.476 .692l-4.524 -3.77h-8a1 1 0 0 1 -1 -1v-4a1 1 0 0 1 1 -1h8" /></svg> Announcement
-            </a>
+            </router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" @click="clickUsers" href="#">
+            <router-link class="nav-link" @click="clickUsers" to="#">
               <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" /><path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /></svg>   Users
-            </a>
+            </router-link>
             <div class="collapse" :class="{show:showUsers}" id="collapseExample">
-                <a class="nav-link fs-6" :class="{ 'active-link': isActive('/admin/adminEnforcerList') }" href="/admin/adminEnforcerList">
+                <router-link class="nav-link fs-6" :class="{ 'active-link': isActive('/admin/adminEnforcerList') }" to="/admin/adminEnforcerList">
               enforcer
-            </a>
-            <a class="nav-link fs-6" :class="{ 'active-link': isActive('/admin/adminUserList') }" href="/admin/adminUserList">
+            </router-link>
+            <router-link class="nav-link fs-6" :class="{ 'active-link': isActive('/admin/adminUserList') }" to="/admin/adminUserList">
               user
-            </a>
+            </router-link>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" @click="clickLicenseNav" href="#">
+            <router-link class="nav-link" @click="clickLicenseNav" to="#">
               <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-id-badge-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 12h3v4h-3z" /><path d="M10 6h-6a1 1 0 0 0 -1 1v12a1 1 0 0 0 1 1h16a1 1 0 0 0 1 -1v-12a1 1 0 0 0 -1 -1h-6" /><path d="M10 3m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v3a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z" /><path d="M14 16h2" /><path d="M14 12h4" /></svg> License
-            </a>
+            </router-link>
             <div class="collapse" :class="{show:showLicenseNav}" id="collapseExample">
-                <a class="nav-link fs-6" :class="{ 'active-link': isActive('/admin/adminLicenseVerified') }" href="/admin/adminLicenseVerified">
+                <router-link class="nav-link fs-6" :class="{ 'active-link': isActive('/admin/adminLicenseVerified') }" to="/admin/adminLicenseVerified">
               verified
-            </a>
-            <a class="nav-link fs-6" :class="{ 'active-link': isActive('/admin/adminLicenseNotVerified') }" href="/admin/adminLicenseNotVerified">
+            </router-link>
+            <router-link class="nav-link fs-6" :class="{ 'active-link': isActive('/admin/adminLicenseNotVerified') }" to="/admin/adminLicenseNotVerified">
               not Verified
-            </a>
+            </router-link>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" @click="clickViolationNav" href="#">
+            <router-link class="nav-link" @click="clickViolationNav" to="#">
               <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-alert-triangle-filled" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 1.67c.955 0 1.845 .467 2.39 1.247l.105 .16l8.114 13.548a2.914 2.914 0 0 1 -2.307 4.363l-.195 .008h-16.225a2.914 2.914 0 0 1 -2.582 -4.2l.099 -.185l8.11 -13.538a2.914 2.914 0 0 1 2.491 -1.403zm.01 13.33l-.127 .007a1 1 0 0 0 0 1.986l.117 .007l.127 -.007a1 1 0 0 0 0 -1.986l-.117 -.007zm-.01 -7a1 1 0 0 0 -.993 .883l-.007 .117v4l.007 .117a1 1 0 0 0 1.986 0l.007 -.117v-4l-.007 -.117a1 1 0 0 0 -.993 -.883z" stroke-width="0" fill="currentColor" /></svg>  Violations
-            </a>
+            </router-link>
             <div class="collapse" :class="{show:showViolationNav}" id="collapseExample">
-                <a class="nav-link fs-6" :class="{ 'active-link': isActive('/admin/adminViolationList') }" href="/admin/adminViolationList">
+                <router-link class="nav-link fs-6" :class="{ 'active-link': isActive('/admin/adminViolationList') }" to="/admin/adminViolationList">
               Violation List
-            </a>
-            <a class="nav-link fs-6" :class="{ 'active-link': isActive('/admin/adminViolatorsList') }" href="/admin/adminViolatorsList">
+            </router-link>
+            <router-link class="nav-link fs-6" :class="{ 'active-link': isActive('/admin/adminViolatorsList') }" to="/admin/adminViolatorsList">
               Violators List
-            </a>
+            </router-link>
             </div>
           </li>
         </ul>

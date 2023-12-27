@@ -37,7 +37,7 @@
 
       <!-- Bootstrap text field for search -->
       <div class="d-flex justify-content-end w-25">
-        <input type="text" class="form-control" v-model="searchNormal" placeholder="Search licence no....">
+        <input type="text" class="form-control" v-model="searchNormal" placeholder="Search....">
       </div>
 
       <div class="mt-5">
@@ -54,6 +54,7 @@
                 <th>Ticket Number</th>
                 <th>License Number</th>
                 <th>Unit</th>
+                <th>Plate number</th>
                 <th>Place of Violation</th>
                 <th>Date and Time</th>
                 <th>Apprehending Officer</th>
@@ -67,6 +68,7 @@
                 <td>{{ violator.ticket_no }}</td>
                 <td>{{ violator.license_no }}</td>
                 <td>{{ violator.unit }}</td>
+                <td>{{ violator.plate_no }}</td>
                 <td>{{ violator.place_of_violation }}</td>
                 <td>{{ violator.date_and_time }}</td>
                 <td>{{ violator.apprehending_officer }}</td>
@@ -76,13 +78,13 @@
                   <router-link class="btn btn-primary" :to="{ name: 'viewNormal', props: { id: violator.id,is_paid:violator.is_paid }, params: { id:violator.id, is_paid: violator.is_paid } }">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M11.102 17.957c-3.204 -.307 -5.904 -2.294 -8.102 -5.957c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6a19.5 19.5 0 0 1 -.663 1.032" /><path d="M15 19l2 2l4 -4" /></svg>
                   </router-link>
+          <button type="button" class="btn btn-danger" @click="deleteViolation(violator.id)">delete</button>
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
         <div v-else>
-          <input type="text" placeholder="Search Or number" v-model="searchOr" class="form-control w-25 mb-2"/>
             <table class="table table-responsive table-light table-striped">
             <thead>
               <tr>
@@ -90,6 +92,7 @@
                 <th>Ticket Number</th>
                 <th>License Number</th>
                 <th>Unit</th>
+                <th>Place number</th>
                 <th>Place of Violation</th>
                 <th>Date and Time</th>
                 <th>Apprehending Officer</th>
@@ -105,6 +108,7 @@
                 <td>{{ violator.ticket_no }}</td>
                 <td>{{ violator.license_no }}</td>
                 <td>{{ violator.unit }}</td>
+                <td>{{ violator.plate_no }}</td>
                 <td>{{ violator.place_of_violation }}</td>
                 <td>{{ violator.date_and_time }}</td>
                 <td>{{ violator.apprehending_officer }}</td>
@@ -115,6 +119,7 @@
                   <router-link class="btn btn-primary" :to="{ name: 'viewNormal', props: { id: violator.id,is_paid:violator.is_paid }, params: { id:violator.id, is_paid: violator.is_paid } }">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M11.102 17.957c-3.204 -.307 -5.904 -2.294 -8.102 -5.957c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6a19.5 19.5 0 0 1 -.663 1.032" /><path d="M15 19l2 2l4 -4" /></svg>
                   </router-link>
+          <button type="button" class="btn btn-danger" @click="deleteViolation(violator.id)">delete</button>
                 </td>
               </tr>
             </tbody>
@@ -132,7 +137,7 @@
 
       <!-- Bootstrap text field for search -->
       <div class="w-25">
-        <input type="text" class="form-control" v-model="searchEmpound" placeholder="Search Driver's Name....">
+        <input type="text" class="form-control" v-model="searchPlate_no" placeholder="Search....">
       </div>
 
       <div class="mt-5">
@@ -148,6 +153,7 @@
               <tr>
                 <th>Ticket Number</th>
                 <th>Unit</th>
+                <th>plate_no</th>
                 <th>Place of Violation</th>
                 <th>Date and Time</th>
                 <th>Apprehending Officer</th>
@@ -157,9 +163,10 @@
             </thead>
             <tbody>
               <!-- Use v-for loop for rendering -->
-              <tr v-for="violator in filteredImpounds" :key="violator.id">
+              <tr v-for="violator in searchPlate" :key="violator.id">
                 <td>{{ violator.ticket_no }}</td>
                 <td>{{ violator.unit }}</td>
+                <td>{{ violator.plate_no }}</td>
                 <td>{{ violator.place_of_violation }}</td>
                 <td>{{ violator.date_and_time }}</td>
                 <td>{{ violator.apprehending_officer }}</td>
@@ -169,6 +176,7 @@
                   <router-link class="btn btn-primary" :to="{ name: 'viewImpound', props: { id: violator.id, is_paid: violator.is_paid }, params: { id:violator.id, is_paid: violator.is_paid } }">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M11.102 17.957c-3.204 -.307 -5.904 -2.294 -8.102 -5.957c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6a19.5 19.5 0 0 1 -.663 1.032" /><path d="M15 19l2 2l4 -4" /></svg>
                   </router-link>
+          <button type="button" class="btn btn-danger" @click="deleteViolation(violator.id)">delete</button>
                 </td>
               </tr>
             </tbody>
@@ -181,6 +189,7 @@
               <tr>
                 <th>Ticket Number</th>
                 <th>Unit</th>
+                <th>Plate_no</th>
                 <th>Place of Violation</th>
                 <th>Date and Time</th>
                 <th>Apprehending Officer</th>
@@ -191,9 +200,10 @@
             </thead>
             <tbody>
               <!-- Use v-for loop for rendering -->
-              <tr v-for="violator in filteredImpounds" :key="violator.id">
+              <tr v-for="violator in searchPlate" :key="violator.id">
                 <td>{{ violator.ticket_no }}</td>
                 <td>{{ violator.unit }}</td>
+                <td>{{ violator.plate_no }}</td>
                 <td>{{ violator.place_of_violation }}</td>
                 <td>{{ violator.date_and_time }}</td>
                 <td>{{ violator.apprehending_officer }}</td>
@@ -204,6 +214,8 @@
                   <router-link class="btn btn-primary" :to="{ name: 'viewImpound', props: { id: violator.id, is_paid: violator.is_paid }, params: { id:violator.id, is_paid: violator.is_paid } }">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M11.102 17.957c-3.204 -.307 -5.904 -2.294 -8.102 -5.957c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6a19.5 19.5 0 0 1 -.663 1.032" /><path d="M15 19l2 2l4 -4" /></svg>
                   </router-link>
+          <button type="button" class="btn btn-danger" @click="deleteViolation(violator.id)">delete</button>
+
                 </td>
               </tr>
             </tbody>
@@ -214,21 +226,61 @@
     </div>
   </div>
 </div>
+<!-- <recent-edit-modal @close-modal="closeModal" :edit-value="editValue" :edit-modal="editModal"/> -->
 </template>
 
 <script setup>
+// import recentEditModal from '@/components/modals/recentEditModal.vue';
    import AuthenticationService from '@/services/AuthenticationService';
+import Swal from 'sweetalert2';
 import { onMounted,computed,ref } from 'vue';
     const type = ref('')
     const violators = ref([])
     const impounds = ref([])
     const searchNormal = ref('');
-    const searchImpound = ref('')
+    const searchPlate_no = ref('')
     const is_paid = ref(0)
     const succs = ref('')
     const err = ref('')
-    const searchOr =ref('')
     const Paidviolators = ref([])
+    // const editModal = ref(false);
+      // const editValue = ref([])
+      // const closeModal = ()=>{
+      //   editModal.value = false
+      // }
+      const deleteViolation = (data)=>{
+  Swal.fire({
+        title: 'Are you sure you want to delete This Violation?',
+        text: 'This action cannot be undone!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, proceed',
+        cancelButtonText: 'No, cancel',
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        reverseButtons: true,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          deleteThisViolation(data)
+        }
+      });
+}
+      const deleteThisViolation = async(recentAdd)=>{
+        try{
+          const response = await AuthenticationService.deleteThisViolation({
+            id:parseInt(recentAdd)
+          });
+          if(response){
+            Swal.fire('Success','Delete Successfull','success');
+            getAllImpounds();
+            getAllPaidViolators();
+            getAllViolators()
+          }
+        }catch(error){
+          Swal.fire('Error',error.response.data.msg,'error');
+        }
+      }
+      // console.log(editValue.value)
     const getAllViolators = async()=>{
         try {
             const response = await AuthenticationService.getAllViolatorsNormal();
@@ -239,14 +291,14 @@ import { onMounted,computed,ref } from 'vue';
             console.log(error)
         }
     }
-
     const filteredViolators = computed(() => {
-  return violators.value.filter(violator => {
-    return (
-      violator.license_no.toLowerCase().includes(searchNormal.value.toLowerCase())
-    );
-  });
-});
+        if(searchNormal.value.toLowerCase() === ''){
+          return violators.value
+        }
+        return violators.value.filter(data =>
+        Object.values(data).some(value => String(value).toLowerCase().includes(searchNormal.value.toLowerCase()))
+        )
+      });
 const getAllPaidViolators = async()=>{
         try {
             const response = await AuthenticationService.getAllPaidViolatorsNormal();
@@ -258,11 +310,13 @@ const getAllPaidViolators = async()=>{
         }
     }
     const filteredPaidViolators = computed(() => {
-  return Paidviolators.value.filter(violator => 
-    violator.or_no?.toLowerCase().includes(searchOr.value?.toLowerCase())
-  );
-});
-
+        if(searchNormal.value.toLowerCase() === ''){
+          return Paidviolators.value
+        }
+        return Paidviolators.value.filter(data =>
+        Object.values(data).some(value => String(value).toLowerCase().includes(searchNormal.value.toLowerCase()))
+        )
+      });
 
 
 
@@ -276,14 +330,14 @@ const getAllPaidViolators = async()=>{
             console.log(error)
         }
     }
-    const filteredImpounds = computed(() => {
-  return impounds.value.filter(impound => {
-    return (
-      impound.name_of_driver.toLowerCase().includes(searchImpound.value.toLowerCase()) &&
-      impound.is_paid == is_paid.value
-    );
-  });
-});
+    const searchPlate = computed(() => {
+        if(searchPlate_no.value.toLowerCase() === ''){
+          return impounds.value
+        }
+        return impounds.value.filter(data =>
+        Object.values(data).some(value => String(value).toLowerCase().includes(searchPlate_no.value.toLowerCase()))
+        )
+      });
 
 
 

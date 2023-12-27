@@ -105,7 +105,7 @@ const getUsersViolations = async () => {
 };
 const paidThis = ()=>{
   Swal.fire({
-        title: 'Are you sure?',
+        title: 'Are you sure you want to release this unit?',
         text: 'This action cannot be undone!',
         icon: 'warning',
         showCancelButton: true,

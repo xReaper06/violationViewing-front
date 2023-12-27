@@ -27,16 +27,18 @@
                             <!-- Your Form Fields and Controls -->
                             <!-- Bootstrap form controls -->
                             <!-- Example: -->
-                            <form id="formReset">
-
                               <div class="mb-3">
                                   <label for="ticket_no" class="form-label">Ticket number</label>
                                   <input v-model="formData.ticket_no" type="number" class="form-control" id="ticket_no"
-                                      required>
+                                    placeholder="Enter ticket number"  required>
                               </div>
                               <div class="mb-3">
                                   <label for="unit" class="form-label">Unit</label>
-                                  <input v-model="formData.unit" type="text" class="form-control" id="unit" required>
+                                  <input v-model="formData.unit" type="text" placeholder="Enter the unit" class="form-control" id="unit" required>
+                              </div>
+                              <div class="mb-3">
+                                  <label for="unit" class="form-label">Plate no.</label>
+                                  <input v-model="formData.plate_no" type="text" placeholder="Enter the plate Number" class="form-control" id="plate_no" required>
                               </div>
                               <div v-for="i in violationCount" :key="i" class="mb-3">
       <div class="row">
@@ -44,6 +46,7 @@
               <label for="'violations-' + i" class="form-label">Violations</label>
               <select v-model="specific_violations.violations[i - 1]" class="form-select" required
                   :id="'violations-' + i">
+                  <option value="" selected disabled>Select the Violation</option>
                   <option v-for="violation in violationName" :key="violation" :value="violation">{{ violation }}
                   </option>
               </select>
@@ -51,6 +54,7 @@
           <div class="col-12 text-center">
               <label for="'fines-' + i" class="form-label">Fine</label>
               <input v-model="specific_violations.fines[i - 1]" type="number" class="form-control" required
+              placeholder="Enter the fine"
                   :id="'fines-' + i">
           </div>
       </div>
@@ -59,7 +63,7 @@
                                   <label for="place_of_violation" class="form-label">Place of Violation</label>
                                   <select v-model="formData.place_of_violation" class="form-select"
                                       id="place_of_violation" required>
-                                      <option value="" disabled>Select Place of Violation</option>
+                                      <option value="" disabled selected>Select Place of Violation</option>
                                       <option value="Poblacion">Poblacion</option>
               <option value="Catarman">Catarman</option>
               <option value="Ibabao">Ibabao</option>
@@ -78,11 +82,11 @@
                               <div class="mb-3">
                                   <label for="name_of_driver" class="form-label">Name of Driver</label>
                                   <input v-model="formData.name_of_driver" type="text" class="form-control"
-                                      id="name_of_driver" required>
+                                      id="name_of_driver" placeholder="Enter the name of the Driver/Rider" required>
                               </div>
                               <div class="mb-3">
                                   <label for="unit_empounded" class="form-label">Unit Empounded</label>
-                                  <input type="file" class="form-control" id="unit_empounded"
+                                  <input type="file" class="form-control" id="unit_empounded" placeholder="Choose Pictures"
                                       @change="handleimageChange" accept="image/jpeg, image/jpg, image/png">
                                   <div v-if="showFile">
                                       <img :src="fileView.preview" alt="Selected Image" style="max-width: 100px; max-height: 100px;">
@@ -92,7 +96,6 @@
                               <div class="mb-3">
                                   <button @click="clickSubmit" class="btn btn-primary">Submit</button>
                               </div>
-                            </form>
                         </div>
                     </div>
                 </div>
@@ -121,6 +124,7 @@ const file = ref(null);
       const formData = ref({
             ticket_no:'',
             unit:'',
+            plate_no:'',
             place_of_violation:'',
             name_of_driver:'',
 
@@ -193,7 +197,6 @@ const clickSubmit = ()=>{
 }
 
         const impoundCitation = async()=>{
-          const form = document.querySelector('#formReset')
           user.value = localStorage.getItem('user')
           username.value = JSON.parse(user.value)
           const apend = new FormData();
@@ -207,6 +210,7 @@ const clickSubmit = ()=>{
           }
           apend.append('ticket_no',formData.value.ticket_no)
           apend.append('unit',formData.value.unit)
+          apend.append('plate_no',formData.value.plate_no)
           apend.append('place_of_violation',formData.value.place_of_violation)
           apend.append('name_of_driver',formData.value.name_of_driver)
           apend.append('apprehending_officer',username.value.nickname)
@@ -218,11 +222,19 @@ const clickSubmit = ()=>{
             });
             if (response) {
             Swal.fire('Success', response.data.msg, 'success');
-              form.reset()
+            formData.value.ticket_no = ''
+            formData.value.unit = ''
+            formData.value.plate_no = ''
+            formData.value.place_of_violation = ''
+            formData.value.name_of_driver = ''
+            specific_violations.violations = []
+            specific_violations.fines = []
+
             }
             console.log(response.data.msg)
           } catch (error) {
-            Swal.fire('Error', error.response.data.msg, 'error');            
+            Swal.fire('Error', error.response.data.msg, 'error');     
+
           }
         }
 

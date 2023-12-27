@@ -130,10 +130,12 @@ import enforcerInfoModal from '@/components/modals/enforcerInfoModal.vue';
           registrationForm.value = false
             email.value = null;
             success.value = response.data.msg;
+            err.value = '';
         }
     } catch (error) {
         console.log(error)
         err.value = error.response.data.msg
+        success.value = ''
     }
 }
 

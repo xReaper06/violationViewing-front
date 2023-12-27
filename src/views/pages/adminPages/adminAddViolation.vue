@@ -66,6 +66,16 @@
                       required
                     />
                   </div>
+                  <div class="mb-3">
+                    <label for="unit" class="form-label">Plate number</label>
+                    <input
+                      v-model="formData.plate_no"
+                      type="text"
+                      class="form-control"
+                      id="plate_no"
+                      required
+                    />
+                  </div>
                   <div v-for="i in violationCount" :key="i" class="mb-3">
                     <div class="row">
                       <div class="col-12 text-center">
@@ -172,6 +182,10 @@
                                 <label for="unit" class="form-label">Unit</label>
                                 <input v-model="formData.unit" type="text" class="form-control" id="unit" required>
                             </div>
+                            <div class="mb-3">
+                                <label for="unit" class="form-label">Plate Number</label>
+                                <input v-model="formData.plate_no" type="text" class="form-control" id="plate_no" required>
+                            </div>
                             <div v-for="i in violationCount" :key="i" class="mb-3">
     <div class="row">
         <div class="col-12 text-center">
@@ -241,6 +255,7 @@ const formData = ref({
   ticket_no: "",
   license_no: "",
   unit: "",
+  plate_no: "",
   place_of_violation: "",
   name_of_driver: "",
 });
@@ -287,6 +302,7 @@ const normalCitation = async () => {
         ticket_no:formData.value.ticket_no,
         license_no:formData.value.license_no,
         unit:formData.value.unit,
+        plate_no:formData.value.plate_no,
         specific_violations:specific_violations.violations,
         fines:specific_violations.fines,
         place_of_violation:formData.value.place_of_violation,
@@ -307,6 +323,7 @@ const impoundCitation = async () => {
     const response = await AuthenticationService.adminImpoundCitation({
         ticket_no:formData.value.ticket_no,
         unit:formData.value.unit,
+        plate_no:formData.value.plate_no,
         specific_violations:specific_violations.violations,
         fines:specific_violations.fines,
         place_of_violation:formData.value.place_of_violation,

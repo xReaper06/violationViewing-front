@@ -49,6 +49,16 @@
                             />
                           </div>
                           <div class="mb-3">
+                            <label for="unit" class="form-label">Plate no</label>
+                            <input
+                              v-model="formData.plate_no"
+                              type="text"
+                              class="form-control"
+                              id="plate_no"
+                              required
+                            />
+                          </div>
+                          <div class="mb-3">
                             <label for="place_of_violation" class="form-label"
                               >Place of Violation</label
                             >
@@ -129,6 +139,7 @@ import { ref, defineProps, defineEmits,onMounted } from "vue";
   ticket_no: "",
   license_no: "",
   unit: "",
+  plate_no: "",
   place_of_violation: "",
   name_of_driver: "",
 });
@@ -138,6 +149,7 @@ onMounted(()=>{
     formData.value.ticket_no = newArray.value.ticket_no
     formData.value.license_no = newArray.value.license_no
     formData.value.unit = newArray.value.unit
+    formData.value.plate_no = newArray.value.plate_no
     formData.value.place_of_violation = newArray.value.place_of_violation
     formData.value.name_of_driver = newArray.value.name_of_driver
 })
@@ -166,6 +178,7 @@ const updateThis = async()=>{
             ticket_no:formData.value.ticket_no,
             license_no:formData.value.license_no,
             unit:formData.value.unit,
+            plate_no:formData.value.plate_no,
             place_of_violation:formData.value.place_of_violation,
             name_of_driver:formData.value.name_of_driver,
             status:newArray.value.status

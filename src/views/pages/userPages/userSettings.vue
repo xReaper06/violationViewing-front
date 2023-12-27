@@ -1,6 +1,6 @@
 <template>
 
-<div class="container">
+<div class="container mb-lg-5">
   <h2 class="mb-4 text-center">User Settings</h2>
   
   <div class="alert alert-warning text-center" v-if="err" role="alert">
@@ -13,9 +13,9 @@
 
   <img :src="`http://localhost:8084/api/images/${username.profile_pic}`" alt="Profile Picture" class="profile-pic">
 
-  <div class="row">
+  <div class="row mb-lg-5">
     <!-- Change Profile Picture Section -->
-    <div class="col-md-5">
+    <div class="col-md-5 mb-lg-5">
       <a href="#" class="fs-4 nav-link" @click="clickCollapseChangePic">Change Profile Picture <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-bar-down" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 20l0 -10" /><path d="M12 20l4 -4" /><path d="M12 20l-4 -4" /><path d="M4 4l16 0" /></svg></a>
       <div class="collapse" id="collapseChangePic" :class="{show: showCollapseChangePic}">
         <div class="card card-body">
@@ -32,9 +32,9 @@
     </div>
 
     <!-- Change Password Section -->
-    <div class="col-md-5">
+    <div class="col-md-5 mb-lg-5">
       <a class="fs-4 nav-link" href="#" @click="clickCollapseChangePass">Change Password <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-bar-down" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 20l0 -10" /><path d="M12 20l4 -4" /><path d="M12 20l-4 -4" /><path d="M4 4l16 0" /></svg></a>
-      <div class="collapse" id="collapseChangePass" :class="{show: showCollapseChangePass}">
+      <div class="collapse mb-lg-5" id="collapseChangePass" :class="{show: showCollapseChangePass}">
         <div class="form-group">
           <label for="newPassword" class="form-label">New Password</label>
           <input type="password" id="newPassword" class="form-control" v-model="newPassword" required @keyup="handleStrongVerification">
@@ -217,7 +217,7 @@ const submitChangePassword = async ()=>{
       display: flex;
       flex-direction: column;
       align-items: center;
-      height: 500px;
+      height: 600px;
       margin-top: 20px;
     }
 

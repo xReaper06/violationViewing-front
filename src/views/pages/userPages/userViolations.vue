@@ -20,7 +20,10 @@
             <li v-for="violator in filterViolation" :key="violator.id" class="list-group-item">
               <div class="d-flex justify-content-between">
                 <h4 class="mb-1">Ticket Number: {{ violator.ticket_no }}</h4>
-                <small class="text-muted">Unit: {{ violator.unit }}</small>
+                <div class="d-flex flex-column">
+                  <small class="text-muted">Unit: {{ violator.unit }}</small>
+                  <small class="text-muted">plate no.: {{ violator.plate_no }}</small>
+                </div>
               </div>
               <p class="mb-1">Place of Violation: {{ violator.place_of_violation }}</p>
               <p class="mb-1">Date and Time: {{ violator.date_and_time }}</p>
@@ -76,10 +79,11 @@ import { onMounted,computed } from 'vue';
     });
     if(response){
       myLicense.value = response.data.myLicense;
-      if (myLicense.value) {
-        license_no.value = myLicense.value[0].license_no;
+      license_no.value = myLicense.value[0].license_no;
+      if (myLicense.value[0].is_verified == 0) {
         console.log('License Number:', license_no.value);
-        getMyViolation(); // Call getMyViolation after getting the license number
+      }else{
+        getMyViolation();
       }
     }
   } catch (error) {
